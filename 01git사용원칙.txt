@@ -1,0 +1,10 @@
+1. 모르는 상태에서 yes or 파란색 버튼 막 누르지말자.
+2. 커밋은 신중히(내가 작업한 파일들만 커밋되는지 확인)
+3. 커밋할때 + pull 현재 브랜치 꼭 확인하기 ( master에는 commit 안할꺼에요)
+4. update, reset은 사용X.      rebase,clone보다는 merge,pull, reset보다는 revert
+   => update, reset, rebase, clone 사용X
+5. 로컬 깃이랑 원격 깃 상태 생각하면서 작업하기.
+
+
+
+commit/push  checkout,  pull, merge,    revert 정도
