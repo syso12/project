@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.study.member.dao.IMemberDao">
+    <insert id="memberJoin">
+        INSERT INTO MEMBERS
+        (MEM_ID,                    MEM_PW,                 MEM_NAME,
+         MEM_GENDER,                MEM_ZIPCODE,            MEM_ADD1,
+         MEM_ADD2,                  MEM_CODE,               MEM_EMAIL
+        )
+        VALUES (
+        #{memId},                   #{memPw},               #{memName},
+        #{memGender},               #{memZipcode},          #{memAdd1},
+        #{memAdd2},                 '회원',             #{memEmail}
+        )
+
+    </insert>
+
+    <select id="memberLogin" resultType="com.study.member.vo.MemberVO" parameterType="String">
+        SELECT MEM_ID, MEM_PW, MEM_NAME, MEM_GENDER,
+               MEM_ZIPCODE, MEM_ADD1, MEM_ADD2,
+               MEM_CODE, MEM_EMAIL
+        FROM MEMBERS
+        WHERE MEM_ID = #{memId}
+    </select>
+
+    <select id="getMember" resultType="com.study.member.vo.MemberVO" parameterType="string">
+        SELECT MEM_ID, MEM_PW, MEM_NAME, MEM_GENDER,
+               MEM_ZIPCODE, MEM_ADD1, MEM_ADD2,
+               MEM_CODE, MEM_EMAIL
+        FROM MEMBERS
+        WHERE MEM_ID = #{memId}
+    </select>
+
+    <select id="getMemberList" resultType="com.study.member.vo.MemberVO">
+        SELECT
+            MEM_ID,                 MEM_PW,                 MEM_NAME,
+            MEM_GENDER,             MEM_ZIPCODE,            MEM_ADD1,
+            MEM_ADD2,               MEM_CODE,               MEM_EMAIL
+        FROM MEMBERS
+
+    </select>
+
+    <update id="updateMember" parameterType="com.study.member.vo.MemberVO">
+        UPDATE MEMBERS
+        SET MEM_PW = #{memPw}
+          , MEM_NAME = #{memName}
+          , MEM_ZIPCODE = #{memZipcode}
+          , MEM_ADD1 = #{memAdd1}
+          , MEM_ADD2 = #{memAdd2}
+          , MEM_EMAIL = #{memEmail}
+        WHERE MEM_ID = #{memId}
+
+    </update>
+
+    <delete id="deleteMember" parameterType="com.study.member.vo.MemberVO">
+        DELETE
+        FROM MEMBERS
+        WHERE MEM_ID = #{memId}
+    </delete>
+</mapper>

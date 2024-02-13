@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.study.free.dao.IFreeDao">
+
+    <select id="getTotalRowCount" resultType="java.lang.Integer">
+        SELECT count(*)
+        from FREEBoard
+
+    </select>
+
+    <select id="freeList" resultType="com.study.free.vo.FreeVO">
+        SELECT * FROM(
+        SELECT a.*, rownum AS rnum FROM(
+        SELECT BO_NO,
+                     BO_TITLE,
+                     BO_WRITER,
+                     BO_PASS,
+                     BO_CATEGORY,
+                     BO_CONTENT,
+                     BO_REG_DATE,
+                     BO_MOD_DATE,
+                     b.comm_nm as bo_category_nm
+              FROM FREEBOARD a
+                 , code b
+              where a.bo_category = b.comm_cd
+              order by a.bo_no asc
+              )a)b
+              WHERE rnum between #{paging.firstRow} and #{paging.lastRow}
+
+    </select>
+    <select id="getFreeView" resultType="com.study.free.vo.FreeVO" parameterType="int">
+        SELECT BO_NO, BO_TITLE, BO_WRITER,
+               BO_PASS, BO_CATEGORY, BO_CONTENT,
+               BO_REG_DATE, BO_MOD_DATE,
+               b.comm_nm as bo_category_nm
+        FROM FREEBOARD a
+             ,code b
+        WHERE bo_no = #{boNo}
+        and a.bo_category = b.comm_cd
+        order by a.bo_no asc
+    </select>
+
+
+    <update id="updateBoard" parameterType="com.study.free.vo.FreeVO">
+        UPDATE FREEBOARD
+        SET  bo_title = #{boTitle}
+           , bo_category = #{boCategory}
+           , bo_content = #{boContent}
+           , bo_writer = #{boWriter}
+           ,bo_mod_date = sysdate
+        WHERE bo_no = #{boNo}
+
+
+    </update>
+
+    <delete id="deleteBoard" parameterType="com.study.free.vo.FreeVO">
+        DELETE
+        FROM FREEBOARD
+        WHERE bo_no = #{boNo}
+
+    </delete>
+
+    <insert id="registerBoard" parameterType="com.study.free.vo.FreeVO">
+        <selectKey keyProperty="boNo" order="BEFORE" resultType="int">
+            select board.nextval from dual
+        </selectKey>
+        INSERT INTO freeboard(
+        bo_no
+        , bo_title
+        , bo_writer
+        , bo_pass
+        , bo_category
+        , bo_content
+        , bo_reg_date
+        , bo_mod_date
+        )
+        values(
+         #{boNo}
+        , #{boTitle}
+        , #{boWriter}
+        , #{boPass}
+        , #{boCategory}
+        , #{boContent}
+        , sysdate
+        , null
+        )
+
+    </insert>
+
+
+
+</mapper>

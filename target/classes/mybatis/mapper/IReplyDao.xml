@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.study.reply.dao.IReplyDao">
+
+    <select id="getReplyCount" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM REPLY
+        WHERE re_parentno = #{reParentNo}
+
+    </select>
+
+    <select id="replyList" resultType="com.study.reply.vo.ReplyVO" parameterType="com.study.reply.vo.ReplyVO">
+        select * from(
+        SELECT a.*, rownum as rnum from(
+        SELECT RE_NO, RE_PARENTNO, RE_MEMID,
+               RE_CONTENTS, RE_REGDATE, RE_MOGDATE,
+            b.mem_name as re_mem_name
+        FROM REPLY a
+            ,member b
+        WHERE
+            a. RE_MEMID = b.MEM_ID
+        and re_parentNo = #{reParentNo}
+        order by RE_NO asc
+        )a)b
+        where rnum between #{paging.firstRow} and #{paging.lastRow}
+    </select>
+    <select id="getReply" resultType="com.study.reply.vo.ReplyVO"></select>
+
+
+    <update id="updateReply" parameterType="com.study.reply.vo.ReplyVO">
+        UPDATE REPLY
+        SET RE_CONTENTS = #{reContents}
+        WHERE RE_NO = #{reNo}
+        and RE_MEMID = #{reMemId}
+
+    </update>
+
+    <delete id="deleteReply" parameterType="com.study.reply.vo.ReplyVO">
+        DELETE
+        FROM REPLY
+        WHERE RE_NO = #{reNo}
+        and RE_MEMID = #{reMemId}
+
+    </delete>
+
+    <insert id="insertReply">
+        INSERT INTO reply( re_no
+                         , re_parentNo
+                         , re_memId
+                         , re_regDate
+                         , re_mogDate
+                         , re_contents)
+            VALUES
+            ( reNo_seq.nextval
+               , #{reParentNo}
+               , #{reMemId}
+               , sysdate
+               , null
+               , #{reContents}
+               )
+    </insert>
+
+
+</mapper>
