@@ -38,6 +38,20 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;syso12&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="f6b15049-fe0a-46c5-a061-75bf2992904a" />
+        <option name="url" value="https://github.com/syso12/project.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -214,6 +228,13 @@
       <workItem from="1707354786215" duration="3189000" />
       <workItem from="1707375632460" duration="727000" />
       <workItem from="1707813310964" duration="90000" />
+      <workItem from="1707824969456" duration="99000" />
+      <workItem from="1707961893533" duration="1254000" />
+      <workItem from="1708418658477" duration="1390000" />
+      <workItem from="1708561228276" duration="52000" />
+      <workItem from="1708581980696" duration="1391000" />
+      <workItem from="1708914653960" duration="701000" />
+      <workItem from="1709005469719" duration="3794000" />
     </task>
     <task id="LOCAL-00001" summary="2024-01-11">
       <option name="closed" value="true" />
@@ -255,7 +276,23 @@
       <option name="project" value="LOCAL" />
       <updated>1707379686309</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="2024.02.13&#10;최종프로젝">
+      <option name="closed" value="true" />
+      <created>1707825019957</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1707825019957</updated>
+    </task>
+    <task id="LOCAL-00007" summary="2024.02.13&#10;최종프로젝">
+      <option name="closed" value="true" />
+      <created>1707825058633</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1707825058633</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,6 +305,7 @@
     <MESSAGE value="documentation 브랜치 &#10;커밋용 파" />
     <MESSAGE value="브랜치 두번째 커밋 푸" />
     <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <MESSAGE value="2024.02.13&#10;최종프로젝" />
+    <option name="LAST_COMMIT_MESSAGE" value="2024.02.13&#10;최종프로젝" />
   </component>
 </project>
